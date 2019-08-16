@@ -20,7 +20,7 @@ Eventually I will make docker image with all required stuff, so it will be more 
 ## Usage
 
 ```
-usage: main.py [-h] --api-id API_ID --api-hash API_HASH [--test]
+usage: main.py [-h] --api-id API_ID --api-hash API_HASH
                [--lib-path LIB_PATH] [--lib-localdb-dir LIB_LOCALDB_DIR]
                [--lib-localdb-key LIB_LOCALDB_KEY]
                ACTION
@@ -34,7 +34,6 @@ optional arguments:
   -h, --help            show this help message and exit
   --api-id API_ID       Your api_id from https://my.telegram.org
   --api-hash API_HASH   Your api_hash from https://my.telegram.org
-  --test                Test confiramtion
   --lib-path LIB_PATH   Provide custom path to libtdjson.so
   --lib-localdb-dir LIB_LOCALDB_DIR
                         Directory for local db, default: tdlib

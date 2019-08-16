@@ -14,7 +14,6 @@ parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpForm
 parser.add_argument('action', metavar="ACTION", nargs=1, choices=["count", "delete", "delete-all", "leave-all"], help='Select one action to execute')
 parser.add_argument('--api-id', required=True, type=int, metavar="API_ID", help='Your api_id from https://my.telegram.org')
 parser.add_argument('--api-hash', required=True, metavar="API_HASH", help='Your api_hash from https://my.telegram.org')
-parser.add_argument('--test', action='store_const', const=True, help='Test confiramtion')
 #parser.add_argument('--filter-kwords-exclude', default=[], help='[WIP] Comma-separated list of words to preserve chats which contain any of these words in title')
 parser.add_argument('--lib-path', help='Provide custom path to libtdjson.so')
 parser.add_argument('--lib-localdb-dir', default='tdlib', help='Directory for local db, default: tdlib')
@@ -26,7 +25,7 @@ api_id = args.api_id
 api_hash = args.api_hash
 chat_ids = []
 chats = []
-lib_path = args.lib_path or "lib/libtdjson.so.1.4.0"  # find_library('tdjson') or 'tdjson.dll'
+lib_path = args.lib_path or "lib/libtdjson.so"  # find_library('tdjson') or 'tdjson.dll'
 localdb_dir = args.lib_localdb_dir
 localdb_key = args.lib_localdb_key
 action = args.action[0]
