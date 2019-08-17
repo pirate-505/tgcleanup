@@ -7,11 +7,13 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, description='Manage your chats in telegram', epilog='''available actions:
+  login      -- just login and obtain quantity of chats
   count      -- Just count all messages in all deletable chats
   delete     -- actually delete private chats with all messages (you will be asked anyway)
   delete-all -- try to delete all private chats and leave all public chats and channels
-  leave-all  -- just leaves from all groups and channels, does not delete private chats''')
-parser.add_argument('action', metavar="ACTION", nargs=1, choices=["count", "delete", "delete-all", "leave-all"], help='Select one action to execute')
+  leave-all  -- just leaves from all groups and channels, does not delete private chats
+  logout     -- log out from client and remove all local data''')
+parser.add_argument('action', metavar="ACTION", nargs=1, choices=["count", "delete", "delete-all", "leave-all", "logout", "login"], help='Select one action to execute')
 parser.add_argument('--api-id', required=True, type=int, metavar="API_ID", help='Your api_id from https://my.telegram.org')
 parser.add_argument('--api-hash', required=True, metavar="API_HASH", help='Your api_hash from https://my.telegram.org')
 #parser.add_argument('--filter-kwords-exclude', default=[], help='[WIP] Comma-separated list of words to preserve chats which contain any of these words in title')
@@ -62,8 +64,7 @@ def delete_act():
         sys.stdout.flush()
         c_count = 0
         for c in chats_deletable:
-            #r = tg.delete_chat_history(c['id'], remove_from_chat=True, revoke=True)
-            r = {"ok": "okay"}
+            r = tg.delete_chat_history(c['id'], remove_from_chat=True, revoke=True)
             if "ok" in r:
                 c_count += 1
                 print("\b\b\b\b\b%5d" % c_count, end="")
@@ -114,7 +115,6 @@ def leave_act():
         for c in chats:
             if c["chat_type"] == "chatTypeSupergroup" or c["chat_type"] == "chatTypeBasicGroup":
                 r = tg.leave_from_chat(c["id"])
-            r = {"ok": "okay"}
             if "ok" in r:
                 c_count += 1
                 print("\b\b\b\b\b%5d" % c_count, end="")
@@ -123,10 +123,24 @@ def leave_act():
         print("Done!")
 
 
-actions = {"count": count_act, "delete": delete_act, "delete-all": delete_all_act, "leave-all": leave_act}
+def login_act():
+    # actually, it logs in automatically below
+    pass
+
+
+def logout_act():
+    print("Logging out...", end="")
+    r = tg.log_out()
+    if r:
+        time.sleep(3)  # just to give lib some time
+        print("done")
+    else:
+        print("fail")
+
+
+actions = {"count": count_act, "delete": delete_act, "delete-all": delete_all_act, "leave-all": leave_act, "logout": logout_act, "login": login_act}
 
 print("Initializing tg client...", end="")
-
 try:
     tg = tgthingy.TGthingy(api_id,
                            api_hash,

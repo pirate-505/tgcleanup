@@ -112,6 +112,10 @@ class TGthingy:
     def close_client(self):
         self._td_json_client_destroy(self.client)
 
+    def log_out(self):
+        ans = self.get_answer({"@type": "logOut"})
+        return ans
+
     def _get_chats(self, offset_order, offset_id=0, limit=100):
         ans = self.get_answer({"@type": "getChats",
                                "offset_order": offset_order,
