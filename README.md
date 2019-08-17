@@ -6,7 +6,7 @@ Quite simple script written in python, which uses [tdlib](https://github.com/tdl
 
 **Important note: all private chats will be removed permanently both for you and other person! You will be asked for confirmation!**
 
-## How do I use it?
+## How to make it work?
 First, you will need to obtain `api_id` and `api_hash` from https://my.telegram.org/ and pass it to script via corresponding command line parameters, `--api-id` and `--api-hash`. You can check usage by executing `python3 main.py --help`.
 
 However, there are some problems with **tdlib** itself, because precompiled one might (and will) not work correctly on your system. Thats what you can do in this case:
