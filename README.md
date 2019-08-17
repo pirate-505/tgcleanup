@@ -6,19 +6,29 @@ Quite simple script written in python, which uses [tdlib](https://github.com/tdl
 
 **Important note: all private chats will be removed permanently both for you and other person! You will be asked for confirmation!**
 
-## How to make it work?
-First, you will need to obtain `api_id` and `api_hash` from https://my.telegram.org/ and pass it to script via corresponding command line parameters, `--api-id` and `--api-hash`. You can check usage by executing `python3 main.py --help`.
+## Requirements
 
-However, there are some problems with **tdlib** itself, because precompiled one might (and will) not work correctly on your system. Thats what you can do in this case:
+- Python 3.6+
+- Your `api_id` and `api_hash` from https://my.telegram.org/
+- Compiled _libtdjson_ ([dependencies for building](https://github.com/tdlib/td#dependencies), details below)
+
+## How to make it work?
+First of all, you will need to obtain `api_id` and `api_hash` from https://my.telegram.org/ and pass it to script via corresponding command line parameters, `--api-id` and `--api-hash`. 
+
+However, there may be some problems with **tdlib** itself, because precompiled one might (and will) not work correctly on your system, failing login process. Thats what you can do in this case:
 - Build it yourself from [sources](https://github.com/tdlib/td) following provided [instructions](https://github.com/tdlib/td#building)
 - Try precompiled ones from https://github.com/Bannerets/tdlib-binaries
 - Search in your distro's repositories for precompiled version for your system.
 
-You will have to provide path to your version of tdlib manually with special parameter `--lib-path <path/to/libname.so>`. Or just put it into _lib_ folder and rename to _libtdjson.so_, replacing old one.
+You will have to provide path to your version of libtdjson manually with special parameter `--lib-path <path/to/libname.so>`. Or just put it into _lib_ folder and rename to _libtdjson.so_, replacing old one.
 
 Eventually I will make docker image with all required stuff, so it will be more portable and universal.
 
 ## Usage
+
+If you followed the instructions and did everything correctly, try `python main.py --api-id <API_ID> --api-hash <API_HASH> login` to login to your telegram account and count all chats. Don't worry, not a single chat will be deleted without explicit command and your confirmation.
+
+You can check out the output of `--help` below to see other available actions and flags.
 
 ```
 usage: main.py [-h] --api-id API_ID --api-hash API_HASH [--lib-path LIB_PATH]
