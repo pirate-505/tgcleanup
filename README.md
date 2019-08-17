@@ -8,12 +8,13 @@ Quite simple script written in python, which uses [tdlib](https://github.com/tdl
 
 ## How do I use it?
 First, you will need to obtain `api_id` and `api_hash` from https://my.telegram.org/ and pass it to script via corresponding command line parameters, `--api-id` and `--api-hash`. You can check usage by executing `python3 main.py --help`.
-However, there are some problems with **tdlib** itself, because precompiled one might (and will) not work correctly on your system. What you can do in this case:
+
+However, there are some problems with **tdlib** itself, because precompiled one might (and will) not work correctly on your system. Thats what you can do in this case:
 - Build it yourself from [sources](https://github.com/tdlib/td) following provided [instructions](https://github.com/tdlib/td#building)
 - Try precompiled ones from https://github.com/Bannerets/tdlib-binaries
 - Search in your distro's repositories for precompiled version for your system.
 
-You will need to provide path to your version of tdlib manually with special parameter `--lib-path <path/to/libname.so>`, or you can just put it into _lib_ folder and rename to _libtdjson.so_, replacing old one.
+You will have to provide path to your version of tdlib manually with special parameter `--lib-path <path/to/libname.so>`. Or just put it into _lib_ folder and rename to _libtdjson.so_, replacing old one.
 
 Eventually I will make docker image with all required stuff, so it will be more portable and universal.
 
