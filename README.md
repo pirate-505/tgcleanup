@@ -20,8 +20,8 @@ Eventually I will make docker image with all required stuff, so it will be more 
 ## Usage
 
 ```
-usage: main.py [-h] --api-id API_ID --api-hash API_HASH
-               [--lib-path LIB_PATH] [--lib-localdb-dir LIB_LOCALDB_DIR]
+usage: main.py [-h] --api-id API_ID --api-hash API_HASH [--lib-path LIB_PATH]
+               [--lib-localdb-dir LIB_LOCALDB_DIR]
                [--lib-localdb-key LIB_LOCALDB_KEY]
                ACTION
 
@@ -41,8 +41,11 @@ optional arguments:
                         Key for accessing local db, default: my_key
 
 available actions:
+  login      -- just login and obtain quantity of chats
   count      -- Just count all messages in all deletable chats
   delete     -- actually delete private chats with all messages (you will be asked anyway)
   delete-all -- try to delete all private chats and leave all public chats and channels
   leave-all  -- just leaves from all groups and channels, does not delete private chats
+  logout     -- log out from client and remove all local data
+
 ```
