@@ -1,6 +1,8 @@
 # tgcleanup
 Manage and delete chats from your telegram account
 
+**Docker image available now!** [See below](#docker-image-with-prebuilt-tdlib)
+
 ## What is this?
 Quite simple script written in python, which uses [tdlib](https://github.com/tdlib/td) api and allows you to delete chats from your telegram account in bulk, in other words to perform some cleanup. 
 
@@ -12,6 +14,12 @@ Quite simple script written in python, which uses [tdlib](https://github.com/tdl
 - Your `api_id` and `api_hash` from https://my.telegram.org/
 - Compiled _libtdjson_ ([dependencies for building](https://github.com/tdlib/td#dependencies), details below)
 
+## Docker image with prebuilt tdlib
+
+Try `docker run -it --rm pirate505/tgcleanup --api-id API_ID --api-hash API_HASH ...`
+
+Or `docker run -it --rm -v /mnt/tdlib:/app/tgcleanup/tdlib pirate505/tgcleanup` if you want to perform multiple actions without re-entering phone and code each time (preserves local db between launches).
+
 ## How to make it work?
 First of all, you will need to obtain `api_id` and `api_hash` from https://my.telegram.org/ and pass it to script via corresponding command line parameters, `--api-id` and `--api-hash`. 
 
@@ -19,10 +27,10 @@ However, there may be some problems with **tdlib** itself, because precompiled o
 - Build it yourself from [sources](https://github.com/tdlib/td) following provided [instructions](https://github.com/tdlib/td#building)
 - Try precompiled ones from https://github.com/Bannerets/tdlib-binaries
 - Search in your distro's repositories for precompiled version for your system.
+- Or just try docker image with prebuilt library.
 
 You will have to provide path to your version of libtdjson manually with special parameter `--lib-path <path/to/libname.so>`. Or just put it into _lib_ folder and rename to _libtdjson.so_, replacing old one.
 
-Eventually I will make docker image with all required stuff, so it will be more portable and universal.
 
 ## Usage
 
