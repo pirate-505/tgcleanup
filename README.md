@@ -4,7 +4,7 @@ Manage and delete chats from your telegram account
 **Docker image available now!** [See below](#docker-image-with-prebuilt-tdlib)
 
 ## What is this?
-Quite simple script written in python, which uses [tdlib](https://github.com/tdlib/td) api and allows you to delete chats from your telegram account in bulk, in other words to perform some cleanup. 
+Quite simple script written in python, which uses [tdlib](https://github.com/tdlib/td) api and allows you to delete chats from your telegram account in bulk and leave from all public chats and channels. In other words to perform some cleanup. 
 
 **Important note: all private chats will be removed permanently both for you and other person! You will be asked for confirmation!**
 
