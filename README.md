@@ -29,8 +29,11 @@ However, there may be some problems with **tdlib** itself, because precompiled o
 - Search in your distro's repositories for precompiled version for your system.
 - Or just try docker image with prebuilt library.
 
-You will have to provide path to your version of libtdjson manually with special parameter `--lib-path <path/to/libname.so>`. Or just put it into _lib_ folder and rename to _libtdjson.so_, replacing old one.
+You will have to provide path to your version of libtdjson manually with special parameter `--lib-path path/to/libtdjson.so`. Or just put it into _lib_ folder and rename to _libtdjson.so_, replacing old one.
 
+## Windows?
+
+The script will work absolutely the same way with one difference only -- you will need to provide path to libtdjson manually via `--lib-path path/to/libtdjson.dll`. [Precompiled versions](https://github.com/Bannerets/tdlib-binaries#windows-x86_64) of **tdlib** should work fine, but you can [build it yourself](https://github.com/tdlib/td#windows) as well.
 
 ## Usage
 
